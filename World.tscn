@@ -1,0 +1,1033 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player.gd" type="Script" id=3]
+[ext_resource path="res://enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PNG/Tiles/platformPack_tile025.png" type="Texture" id=5]
+[ext_resource path="res://lava_wall2.gd" type="Script" id=6]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_11.png" type="Texture" id=7]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_20.png" type="Texture" id=8]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_27.png" type="Texture" id=9]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_10.png" type="Texture" id=10]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_19.png" type="Texture" id=11]
+[ext_resource path="res://PNG/lava_tiles/tileBrown_02.png" type="Texture" id=12]
+[ext_resource path="res://PNG/Items/platformPack_item007.png" type="Texture" id=13]
+[ext_resource path="res://Label.gd" type="Script" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 161, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 192, 32 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 192, 32 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 224, 32 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 161, 32 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 224, 32 )
+
+[sub_resource type="SegmentShape2D" id=14]
+a = Vector2( 768, 32 )
+b = Vector2( -192, -928 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 960, 32 )
+
+[sub_resource type="SegmentShape2D" id=16]
+a = Vector2( 1408, 544 )
+b = Vector2( 2976, -1024 )
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 20.6697
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 540, 380 )
+script = ExtResource( 3 )
+RIGHT_KEY = 16777233
+UP_KEY = 16777232
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 329.869, 561.285 )
+RIGHT_KEY = 16777233
+UP_KEY = 16777232
+delay = 0
+follow = "Player"
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 329.869, 561.285 )
+RIGHT_KEY = 16777233
+UP_KEY = 16777232
+delay = 10
+follow = "Enemy"
+
+[node name="platforms" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="platform_5" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 799, 320 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_5"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_5"]
+shape = SubResource( 1 )
+
+[node name="platform_6" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 768, 64 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_6"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_6"]
+shape = SubResource( 2 )
+
+[node name="platform_9" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 1120, -96 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_9"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_9"]
+shape = SubResource( 3 )
+
+[node name="platform_11" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 1472, -256 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_11"]
+position = Vector2( 64.0001, 0 )
+scale = Vector2( 1.19687, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_11"]
+position = Vector2( 64, 0 )
+shape = SubResource( 4 )
+
+[node name="platform_12" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 1472, -256 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_12"]
+position = Vector2( -16, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_12"]
+position = Vector2( -16, -256 )
+shape = SubResource( 5 )
+
+[node name="platform_15" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 1056, -416 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_15"]
+position = Vector2( 1.14441e-05, -224 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_15"]
+position = Vector2( 0, -224 )
+shape = SubResource( 6 )
+
+[node name="platform_13" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 1472, -256 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_13"]
+position = Vector2( -480, -96 )
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_13"]
+position = Vector2( -480, -96 )
+shape = SubResource( 7 )
+
+[node name="platform_7" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 224, 192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_7"]
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_7"]
+position = Vector2( 7.12077e-06, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="platform_8" type="StaticBody2D" parent="platforms"]
+editor/display_folded = true
+position = Vector2( 224, 128 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/platform_8"]
+position = Vector2( 96, 288 )
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="platforms/platform_8"]
+position = Vector2( 96, 288 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="platforms2" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="platform_5" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 607, -704 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_5"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_5"]
+shape = SubResource( 9 )
+
+[node name="platform_6" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 576, -960 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_6"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_6"]
+shape = SubResource( 9 )
+
+[node name="platform_9" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 928, -1120 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_9"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_9"]
+shape = SubResource( 10 )
+
+[node name="platform_11" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 1280, -1280 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_11"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_11"]
+shape = SubResource( 10 )
+
+[node name="platform_14" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 1280, -1280 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_14"]
+position = Vector2( -32, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_14"]
+position = Vector2( -32, -256 )
+shape = SubResource( 9 )
+
+[node name="platform_15" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 864, -1408 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_15"]
+position = Vector2( -32, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_15"]
+position = Vector2( -32, -256 )
+shape = SubResource( 9 )
+
+[node name="platform_13" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 1280, -1280 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_13"]
+position = Vector2( -416, -96.0001 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_13"]
+position = Vector2( -416, -96 )
+shape = SubResource( 11 )
+
+[node name="platform_7" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 32, -832 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_7"]
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_7"]
+position = Vector2( 7.12077e-06, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="platform_8" type="StaticBody2D" parent="platforms2"]
+editor/display_folded = true
+position = Vector2( 32, -896 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms2/platform_8"]
+position = Vector2( 96, 288 )
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/platform_8"]
+position = Vector2( 96, 288 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="platforms3" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="platform_5" type="StaticBody2D" parent="platforms3"]
+position = Vector2( -384, -928 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_5"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_5"]
+shape = SubResource( 12 )
+
+[node name="platform_6" type="StaticBody2D" parent="platforms3"]
+position = Vector2( -288, -1408 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_6"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_6"]
+shape = SubResource( 12 )
+
+[node name="platform_9" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 64, -1568 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_9"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_9"]
+shape = SubResource( 12 )
+
+[node name="platform_10" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 416, -1728 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_10"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_10"]
+shape = SubResource( 12 )
+
+[node name="platform_11" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 416, -1728 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_11"]
+position = Vector2( 1.00007, -0.000146867 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_11"]
+shape = SubResource( 12 )
+
+[node name="platform_12" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 416, -1728 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_12"]
+position = Vector2( -32, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_12"]
+position = Vector2( -32, -256 )
+shape = SubResource( 12 )
+
+[node name="platform_14" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 416, -1728 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_14"]
+position = Vector2( -32, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_14"]
+position = Vector2( -32, -256 )
+shape = SubResource( 12 )
+
+[node name="platform_15" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 0, -1920 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_15"]
+position = Vector2( -32, -256 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_15"]
+position = Vector2( -32, -256 )
+shape = SubResource( 12 )
+
+[node name="platform_13" type="StaticBody2D" parent="platforms3"]
+position = Vector2( 416, -1728 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_13"]
+position = Vector2( -416, -96 )
+scale = Vector2( 0.999998, 1 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_13"]
+position = Vector2( -416, -96 )
+shape = SubResource( 12 )
+
+[node name="platform_7" type="StaticBody2D" parent="platforms3"]
+position = Vector2( -832, -1280 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_7"]
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_7"]
+position = Vector2( 7.12077e-06, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="platform_8" type="StaticBody2D" parent="platforms3"]
+position = Vector2( -832, -1344 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms3/platform_8"]
+position = Vector2( 96, 288 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="platforms3/platform_8"]
+position = Vector2( 96, 288 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 448, 64 )
+
+[node name="ground" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="lava_wall2" type="StaticBody2D" parent="ground"]
+editor/display_folded = true
+position = Vector2( -2464, 0 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1920, 512 )
+texture = ExtResource( 7 )
+
+[node name="Sprite5" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1920, 576 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1856, 448 )
+texture = ExtResource( 7 )
+
+[node name="Sprite3" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1792, 384 )
+texture = ExtResource( 7 )
+
+[node name="Sprite4" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1728, 320 )
+texture = ExtResource( 7 )
+
+[node name="Sprite11" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1664, 256 )
+texture = ExtResource( 7 )
+
+[node name="Sprite17" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1600, 192 )
+texture = ExtResource( 7 )
+
+[node name="Sprite20" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1536, 128 )
+texture = ExtResource( 7 )
+
+[node name="Sprite21" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1472, 64 )
+texture = ExtResource( 7 )
+
+[node name="Sprite29" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1344, -64 )
+texture = ExtResource( 7 )
+
+[node name="Sprite32" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, -192 )
+texture = ExtResource( 7 )
+
+[node name="Sprite35" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1088, -320 )
+texture = ExtResource( 7 )
+
+[node name="Sprite23" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1408, 64 )
+texture = ExtResource( 8 )
+
+[node name="Sprite30" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1280, -64 )
+texture = ExtResource( 8 )
+
+[node name="Sprite34" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1152, -192 )
+texture = ExtResource( 8 )
+
+[node name="Sprite38" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, -128 )
+texture = ExtResource( 8 )
+
+[node name="Sprite39" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1344, 0 )
+texture = ExtResource( 8 )
+
+[node name="Sprite40" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1088, -256 )
+texture = ExtResource( 8 )
+
+[node name="Sprite36" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1024, -320 )
+texture = ExtResource( 8 )
+
+[node name="Sprite6" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1856, 512 )
+texture = ExtResource( 8 )
+
+[node name="Sprite7" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1696, 640 )
+scale = Vector2( 9, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite8" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1696, 928 )
+scale = Vector2( 9, 10 )
+texture = ExtResource( 9 )
+
+[node name="Sprite9" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1584, 448 )
+scale = Vector2( 5.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite41" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1248, 768 )
+scale = Vector2( 5.5, 5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite43" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1248, 448 )
+scale = Vector2( 5.5, 5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite44" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, 192 )
+scale = Vector2( 5.5, 5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite46" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, 192 )
+scale = Vector2( 5.5, 5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite47" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1280, 0 )
+texture = ExtResource( 9 )
+
+[node name="Sprite48" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, -64 )
+texture = ExtResource( 9 )
+
+[node name="Sprite49" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1152, -128 )
+texture = ExtResource( 9 )
+
+[node name="Sprite50" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1088, -192 )
+texture = ExtResource( 9 )
+
+[node name="Sprite51" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1024, -256 )
+texture = ExtResource( 9 )
+
+[node name="Sprite52" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1024, -192 )
+texture = ExtResource( 9 )
+
+[node name="Sprite53" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1088, -128 )
+texture = ExtResource( 9 )
+
+[node name="Sprite54" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1024, -128 )
+texture = ExtResource( 9 )
+
+[node name="Sprite55" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1216, 0 )
+texture = ExtResource( 9 )
+
+[node name="Sprite56" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1088, -32 )
+scale = Vector2( 3, 2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite42" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1248, 1088 )
+scale = Vector2( 5.5, 5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite10" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1792, 448 )
+texture = ExtResource( 8 )
+
+[node name="Sprite12" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1652, 576 )
+scale = Vector2( 7.625, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite13" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1616, 512 )
+scale = Vector2( 6.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite15" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1552, 384 )
+scale = Vector2( 4.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite25" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1520, 320 )
+scale = Vector2( 3.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite26" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1504, 256 )
+scale = Vector2( 2.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite27" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1472, 192 )
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite28" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1408, 128 )
+scale = Vector2( 0.999999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite57" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 696, -160 )
+scale = Vector2( 9.25, 21 )
+texture = ExtResource( 9 )
+
+[node name="Sprite45" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1408, 224 )
+scale = Vector2( 0.999995, 2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite14" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1728, 384 )
+texture = ExtResource( 8 )
+
+[node name="Sprite16" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1664, 320 )
+texture = ExtResource( 8 )
+
+[node name="Sprite18" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1600, 256 )
+texture = ExtResource( 8 )
+
+[node name="Sprite19" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1536, 192 )
+texture = ExtResource( 8 )
+
+[node name="Sprite22" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1472, 128 )
+texture = ExtResource( 8 )
+
+[node name="Sprite24" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1408, 0 )
+texture = ExtResource( 7 )
+
+[node name="Sprite31" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1280, -128 )
+texture = ExtResource( 7 )
+
+[node name="Sprite33" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1152, -256 )
+texture = ExtResource( 7 )
+
+[node name="Sprite37" type="Sprite" parent="ground/lava_wall2"]
+position = Vector2( 1024, -384 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/lava_wall2"]
+position = Vector2( 1184, 512 )
+shape = SubResource( 14 )
+
+[node name="Area2D3" type="Area2D" parent="ground/lava_wall2"]
+position = Vector2( 2464, 0 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ground/lava_wall2/Area2D3"]
+position = Vector2( -963.953, 79.2346 )
+rotation = 0.785398
+shape = SubResource( 15 )
+
+[node name="lava_wall" type="StaticBody2D" parent="ground"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1440, 512 )
+texture = ExtResource( 10 )
+
+[node name="Sprite5" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1440, 576 )
+texture = ExtResource( 11 )
+
+[node name="Sprite2" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1504, 448 )
+texture = ExtResource( 10 )
+
+[node name="Sprite3" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1568, 384 )
+texture = ExtResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1632, 320 )
+texture = ExtResource( 10 )
+
+[node name="Sprite39" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1984, -32 )
+texture = ExtResource( 10 )
+
+[node name="Sprite11" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1696, 256 )
+texture = ExtResource( 10 )
+
+[node name="Sprite43" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2048, -96 )
+texture = ExtResource( 10 )
+
+[node name="Sprite17" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1760, 192 )
+texture = ExtResource( 10 )
+
+[node name="Sprite29" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2112, -160 )
+texture = ExtResource( 10 )
+
+[node name="Sprite20" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1824, 128 )
+texture = ExtResource( 10 )
+
+[node name="Sprite42" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2176, -224 )
+texture = ExtResource( 10 )
+
+[node name="Sprite21" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1888, 64 )
+texture = ExtResource( 10 )
+
+[node name="Sprite37" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2240, -288 )
+texture = ExtResource( 10 )
+
+[node name="Sprite23" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1952, 0 )
+texture = ExtResource( 10 )
+
+[node name="Sprite40" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2304, -352 )
+texture = ExtResource( 10 )
+
+[node name="Sprite6" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1504, 512 )
+texture = ExtResource( 11 )
+
+[node name="Sprite7" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1696, 640 )
+scale = Vector2( 9, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite8" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1696, 928 )
+scale = Vector2( 9, 10 )
+texture = ExtResource( 9 )
+
+[node name="Sprite44" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2160, 320 )
+scale = Vector2( 5.49999, 10 )
+texture = ExtResource( 9 )
+
+[node name="Sprite45" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2152, 928 )
+scale = Vector2( 5.74998, 10 )
+texture = ExtResource( 9 )
+
+[node name="Sprite9" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1760, 512 )
+scale = Vector2( 7, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite10" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1568, 448 )
+texture = ExtResource( 11 )
+
+[node name="Sprite12" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1720, 576 )
+scale = Vector2( 8.25, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite13" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1792, 448 )
+scale = Vector2( 6, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite15" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1824, 384 )
+scale = Vector2( 5, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite25" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1856, 320 )
+scale = Vector2( 4, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite30" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2208, -32 )
+scale = Vector2( 4, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite26" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1888, 256 )
+scale = Vector2( 2.99999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite35" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2240, -96 )
+scale = Vector2( 2.99999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite27" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1920, 192 )
+scale = Vector2( 1.99999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite34" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2272, -160 )
+scale = Vector2( 1.99999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite28" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1952, 128 )
+scale = Vector2( 0.999999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite41" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2304, -224 )
+scale = Vector2( 0.999999, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite14" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1632, 384 )
+texture = ExtResource( 11 )
+
+[node name="Sprite16" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1696, 320 )
+texture = ExtResource( 11 )
+
+[node name="Sprite36" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2048, -32 )
+texture = ExtResource( 11 )
+
+[node name="Sprite18" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1760, 256 )
+texture = ExtResource( 11 )
+
+[node name="Sprite32" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2112, -96 )
+texture = ExtResource( 11 )
+
+[node name="Sprite19" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1824, 192 )
+texture = ExtResource( 11 )
+
+[node name="Sprite38" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2176, -160 )
+texture = ExtResource( 11 )
+
+[node name="Sprite22" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1888, 128 )
+texture = ExtResource( 11 )
+
+[node name="Sprite33" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2240, -224 )
+texture = ExtResource( 11 )
+
+[node name="Sprite24" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 1952, 64 )
+texture = ExtResource( 11 )
+
+[node name="Sprite31" type="Sprite" parent="ground/lava_wall"]
+position = Vector2( 2304, -288 )
+texture = ExtResource( 11 )
+
+[node name="Area2D2" type="Area2D" parent="ground/lava_wall"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ground/lava_wall/Area2D2"]
+position = Vector2( 1829.4, 141.052 )
+rotation = -0.785398
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/lava_wall"]
+shape = SubResource( 16 )
+
+[node name="lava" type="StaticBody2D" parent="ground"]
+
+[node name="Sprite" type="Sprite" parent="ground/lava"]
+position = Vector2( 448, 576 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/lava"]
+position = Vector2( 448, 576 )
+shape = SubResource( 15 )
+
+[node name="Area2D" type="Area2D" parent="ground/lava"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ground/lava/Area2D"]
+position = Vector2( 448, 556.26 )
+shape = SubResource( 15 )
+
+[node name="ground" type="StaticBody2D" parent="ground"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="ground/ground"]
+position = Vector2( 448, 928 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 640 )
+
+[node name="Gem" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( -18.636, -2250.29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gem"]
+scale = Vector2( 2, 2 )
+shape = SubResource( 17 )
+
+[node name="Sprite" type="Sprite" parent="Gem"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 13 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -478.0
+margin_top = -209.0
+margin_right = -368.0
+margin_bottom = -178.0
+rect_clip_content = true
+text = "bullets: 0"
+script = ExtResource( 14 )

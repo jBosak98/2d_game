@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://BeginScene.gd" type="Script" id=1]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Font2.tres" type="DynamicFont" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 292.424
+margin_top = 150.734
+margin_right = 731.424
+margin_bottom = 295.734
+custom_fonts/font = ExtResource( 2 )
+text = "Jump game"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 354.225
+margin_top = 315.034
+margin_right = 671.225
+margin_bottom = 393.034
+custom_fonts/font = ExtResource( 3 )
+text = "Start the game"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 352.718
+margin_top = 419.04
+margin_right = 669.718
+margin_bottom = 497.04
+custom_fonts/font = ExtResource( 3 )
+text = "Exit"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
